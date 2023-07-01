@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&family=Roboto:ital,wght@1,100&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Inter' sans-serif 700;
+}
+.navigation{
+    background: hsl(0, 0%, 13%);
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    padding: 0.5rem;
+}
+.logo{
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.youtube{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    width: 70%;
+    justify-content: space-between;
+}
+.youtube i{
+    font-size: 1.5rem;
+}
+.youtube h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:white;
+}
+
+.fa-brand,.fa-solid,.fa-regular{
+   font-size: 1.5rem;
+   text-align: center;
+   margin: auto;
+}
+.search{
+   
+    width: 30%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+}
+.input{
+    background: #303030;
+    display: flex;
+    height: 100%;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 0.5rem;
+
+}
+.input i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input input{
+    border: none;
+    width: 90%;
+    height: 95%;
+    background: #121212;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.input input::placeholder{
+    font-size: 1rem;
+    margin-left: 10%;
+}
+
+.mic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    background: black;
+    border-radius: 3rem;
+}
+.info{
+    display: flex;
+    align-items: center;
+    width: 10%;
+    justify-content: space-between;
+}
+.main-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.sidebar{
+
+    width: 250px;
+    height: calc(100vh - 60px);
+    background:#212121;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+    background: hsl(0, 0%, 13%);
+    padding-left: 1rem;
+}
+.sidebar .separator{
+    color: aqua;
+}
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.main{
+    width: 100%;
+    height: 80%;
+}
+.topsection{
+    padding: 0.5rem;
+    height: 2rem;
+    background: hsl(0, 0%, 13%);
+    display: flex;
+    justify-content: space-around;
+    color: white;
+
+}
+.tag
+{   text-align: center;
+    background: #303030;
+    width: 5rem;
+    border-radius: 1rem;
+}
+.video{
+    background: black;
+    height: 95vh;
+
+}
