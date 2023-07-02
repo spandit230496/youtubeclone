@@ -5,6 +5,7 @@ async function getData() {
   try {
     const response = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyADn_74tmJLWyMzPoPszRHubDzcnT6mE5I");
     const data = await response.json();
+    console.log(data)
    videoItems.push(data.items) 
    console.log(videoItems);
 
@@ -27,10 +28,14 @@ function renderData(data) {
 
   data[0].forEach(item => {
     const video = document.createElement('div');
-    video.classList.add('video');
-    video.addEventListener('click', () => {
-      window.location.href = `https://youtube.com/watch?v=${item.id.videoId}`;
-    });
+     
+  video.addEventListener('click', function(event) {
+  const clickedItem = event.target.closest('.video');
+  if (clickedItem) {
+    const itemId = clickedItem.dataset.itemId;
+    alert(itemId); // Prints the ID of the clicked item
+  }
+});
 
     const thumbnail = document.createElement('img');
     thumbnail.src = item.snippet.thumbnails.medium.url;
