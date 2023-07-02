@@ -1,37 +1,70 @@
-const videolist = document.getElementById('videolist');
-
+const videolist = document.querySelector('#videolist')
 async function getData() {
+  var videoItems=[]
+  
   try {
-    const response = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyDtU782niJ_ob7N-Zj-wIhjEuX5x9unZ-M");
+    const response = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=AIzaSyADn_74tmJLWyMzPoPszRHubDzcnT6mE5I");
     const data = await response.json();
-    const videoItems = data.items;
-    console.log(videoItems);
-    if (videoItems) {
+   videoItems.push(data.items) 
+   console.log(videoItems);
+
+   videoItems[0].map((items)=>{
+    console.log(items.snippet.title)
+   })
+   
+    if (videoItems.length>0) {
       renderData(videoItems);
     }
   } catch (error) {
     console.error('Error fetching data:', error);
   }
+  
+  console.log(videoItems)
 }
-
-
 
 function renderData(data) {
-   // Clear the videolist container before rendering new data
+  videolist.innerHTML = ""; 
 
-   videolist.innerHTML += `
-   <div class="video" onclick="location.href = 'https://youtube.com/watch?v=${data.id}'">
-       <img src="${data.snippet.thumbnails.high.url}" class="thumbnail" alt="">
-       <div class="content">
-           <img src="${data.channelThumbnail}" class="channel-icon" alt="">
-           <div class="info">
-               <h4 class="title">${data.snippet.title}</h4>
-               <p class="channel-name">${data.snippet.channelTitle}</p>
-           </div>
-       </div>
-   </div>
-   `;
+  data[0].forEach(item => {
+    const video = document.createElement('div');
+    video.classList.add('video');
+    video.addEventListener('click', () => {
+      window.location.href = `https://youtube.com/watch?v=${item.id.videoId}`;
+    });
+
+    const thumbnail = document.createElement('img');
+    thumbnail.src = item.snippet.thumbnails.medium.url;
+    thumbnail.classList.add('thumbnail');
+
+     const content = document.createElement('div');
+     content.classList.add('content');
+
+    const channelIcon = document.createElement('img');
+    channelIcon.src = item.snippet.channelThumbnail;
+    channelIcon.classList.add('channel-icon');
+
+     const info = document.createElement('div');
+     info.classList.add('infocard');
+
+    const title = document.createElement('h4');
+    title.classList.add('title');
+    title.textContent = item.snippet.title;
+
+    const channelName = document.createElement('p');
+    channelName.classList.add('channel-name');
+    channelName.textContent = item.snippet.channelTitle;
+
+    info.appendChild(title);
+    info.appendChild(channelName);
+
+    content.appendChild(channelIcon);
+    content.appendChild(info);
+
+    video.appendChild(thumbnail);
+    video.appendChild(content);
+
+     videolist.appendChild(video);
+  });
 }
-  ;
 
-  getData();
+getData();
